@@ -1,15 +1,26 @@
-import React from 'react';
-const handleSignup = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const name = form.name.value;
-    const photoURL = form.photoURL.value;
-    const email = form.email.value;
-    const password = form.password.value;
-    const user = { name, photoURL, email, password };
-    console.log(user)
-}
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../Contexts/AuthContextProvider';
+
 const SignupWithEmail = () => {
+    const [errorMessage, setErrormessage] = useState('');
+
+    const { CreateNewUserFB, UpdateUserProfileFB } = useContext(AuthContext);
+    const handleSignup = (e) => {
+        e.preventDefault();
+        const name = e.target.name.value || 'Anonymous';
+        const imageURL = e.target.photoURL.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        CreateNewUserFB(email, password)
+            .then(result => {
+                e.target.reset();
+                setErrormessage('');
+                UpdateUserProfileFB(name, imageURL)
+                    .then(() => e.target.reset())
+                    .catch(e => console.log(e));
+            })
+            .catch(e => setErrormessage(e.message.toLocaleUpperCase().replaceAll(/FIREBASE:|AUTH|[/:.]|ERROR|/g, '').replaceAll(/[-]/g, ' ')));
+    }
     return (
         <form onSubmit={handleSignup}>
             <div className="hero my-8 mx-auto">
@@ -39,6 +50,7 @@ const SignupWithEmail = () => {
                             </label>
                             <input type="password" placeholder="password" name='password' className="input input-bordered" required />
                         </div>
+                        {errorMessage}
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Sign Up</button>
                         </div>

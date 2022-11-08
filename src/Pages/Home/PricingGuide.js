@@ -7,7 +7,6 @@ const PricingGuide = () => {
         fetch('Pricing.json')
             .then(res => res.json())
             .then(data => setItems(data))
-        console.log(items)
     }, [])
     return (
         <div className='p-4'>

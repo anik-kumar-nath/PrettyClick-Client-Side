@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ServiceCard = () => {
     const text = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam quisquam dolores sint quis at? Soluta, expedita. Rerum sunt eos obcaecati velit voluptate pariatur consequuntur, illo, id praesentium ratione nemo a. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias provident fuga praesentium nesciunt tempora inventore voluptas perferendis temporibus eligendi fugiat beatae omnis hic, similique, deleniti repellendus modi impedit placeat autem.Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam quisquam dolores sint quis at? Soluta, expedita. Rerum sunt eos obcaecati velit voluptate pariatur consequuntur, illo, id praesentium ratione nemo a. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias provident fuga praesentium nesciunt tempora inventore voluptas perferendis temporibus eligendi fugiat beatae omnis hic, similique, deleniti repellendus modi impedit placeat autem.';
@@ -14,7 +15,7 @@ const ServiceCard = () => {
 
                     <p>{text.slice(0, 100)}...</p>
                     <div className="card-actions justify-center">
-                        <button className="btn btn-primary">Vew Details</button>
+                        <Link to={'/services/details'} className="btn btn-primary">Vew Details</Link>
                     </div>
                 </div>
             </div>

@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthContextProvider';
 
 const Header = () => {
-    const { user, UserLogOutFB } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const handleLogOut = () => {
-        return UserLogOutFB()
+        return logOut()
             .then(res => { })
             .catch(e => console.log(e));
     }
@@ -51,7 +51,7 @@ const Header = () => {
                             <>
                                 <div className="avatar">
                                     <div className="w-14 mr-1 rounded-full">
-                                        <img src={user.photoURL} title={user.displayName} />
+                                        <img src={user.photoURL} alt='user image' title={user.displayName} />
                                     </div>
                                 </div>
                                 <Link onClick={handleLogOut} className="btn">Log Out</Link>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ServiceCard from '../Services/ServiceCard';
 
 const ListofService = () => {
@@ -11,7 +12,7 @@ const ListofService = () => {
                 <ServiceCard></ServiceCard>
             </div>
             <div className='w-full flex justify-center my-4'>
-                <button className="btn btn-outline btn-primary ">See All</button>
+                <Link to={'/services'} className="btn btn-outline btn-primary">See All</Link>
             </div>
         </div>
     );

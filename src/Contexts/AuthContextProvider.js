@@ -1,64 +1,65 @@
-import React, { createContext, useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import React, { createContext, useEffect, useState } from 'react';
 import app from '../Firebase/Firebase.config';
 
 export const AuthContext = createContext();
+const auth = getAuth(app);
 
 const AuthContextProvider = ({ children }) => {
-    const auth = getAuth(app);
-    const [user, setUser] = useState({});
+
+
+    const [locate, setLocate] = useState('/');
+    const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const CreateNewUserFB = (email, password) => {
+    const createUser = (email, password) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password)
-    }
-    const UserLoginFB = (email, password) => {
-        setLoading(true);
-        return signInWithEmailAndPassword(auth, email, password)
-    }
-    const UserLogOutFB = () => {
-        setLoading(true);
-        return signOut(auth)
+        return createUserWithEmailAndPassword(auth, email, password);
     }
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (CurrentUser) => {
-            setUser(CurrentUser);
-            setLoading(false);
-        });
-        return () => unsubscribe;
-    })
+    const login = (email, password) => {
+        setLoading(true);
+        return signInWithEmailAndPassword(auth, email, password);
+    }
 
-    const UpdateUserProfileFB = (name, photoURL) => {
-        window.location.reload();
+    const logOut = () => {
+        // localStorage.removeItem('genius-token');
+        return signOut(auth);
+    }
+    const LoginWithPopup = (provider) => {
+        setLoading(true);
+        return signInWithPopup(auth, provider);
+    }
+    const profileUpdate = (name, imageURL) => {
         return updateProfile(auth.currentUser, {
-            displayName: name, photoURL: photoURL
+            displayName: name, photoURL: imageURL
         })
     }
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            setUser(currentUser);
+            setLoading(false);
+        });
+        return () => {
+            return unsubscribe();
+        }
+    }, [])
 
-    const LoginWithPopup = (provider) => {
-        signInWithPopup(auth, provider)
-    }
-
-    const AuthInfo = {
-        loading
-        , user
-        , setUser
-        , CreateNewUserFB
-        , UserLoginFB
-        , UserLogOutFB
-        , UpdateUserProfileFB
-        , LoginWithPopup
+    const authInfo = {
+        user,
+        loading,
+        createUser,
+        login,
+        logOut,
+        LoginWithPopup,
+        locate,
+        setLocate,
+        profileUpdate
     }
     return (
-        <div>
-            <AuthContext.Provider value={AuthInfo}>
-                {children}
-            </AuthContext.Provider>
-        </div>
+        <AuthContext.Provider value={authInfo}>
+            {children}
+        </AuthContext.Provider>
     );
 };
-
-
 export default AuthContextProvider;

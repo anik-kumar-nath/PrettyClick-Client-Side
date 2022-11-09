@@ -1,22 +1,27 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthContextProvider';
 
 const LoginWithEmail = () => {
-    const [errorMessage, setErrormessage,] = useState('');
-    const { UserLoginFB } = useContext(AuthContext);
-    const handleSignin = (e) => {
+
+    const { login } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
+
+    const handleLogin = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-        UserLoginFB(email, password)
-            .then((result) => {
+        login(email, password)
+            .then(result => {
                 e.target.reset();
-                setErrormessage('');
+                navigate(from, { replace: true })
             })
-            .catch(e => setErrormessage(e.message.toLocaleUpperCase().slice(22, -2).split('-').join(' ')));
+            .catch(error => console.error(error));
     }
     return (
-        <form onSubmit={handleSignin}>
+        <form onSubmit={handleLogin}>
             <div className="card-body">
                 <div className="form-control">
                     <label className="label">
@@ -34,7 +39,6 @@ const LoginWithEmail = () => {
                     <button className="btn btn-primary">Login</button>
                 </div>
             </div>
-            {errorMessage}
         </form>
     );
 };

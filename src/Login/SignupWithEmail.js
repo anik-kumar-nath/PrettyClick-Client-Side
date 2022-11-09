@@ -1,25 +1,24 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthContextProvider';
 
 const SignupWithEmail = () => {
-    const [errorMessage, setErrormessage] = useState('');
 
-    const { CreateNewUserFB, UpdateUserProfileFB } = useContext(AuthContext);
+    const { createUser, locate, profileUpdate } = useContext(AuthContext);
+    const navigate = useNavigate();
     const handleSignup = (e) => {
         e.preventDefault();
         const name = e.target.name.value || 'Anonymous';
-        const imageURL = e.target.photoURL.value;
+        const imageURL = e.target.photoURL.value || 'https://www.freeiconspng.com/uploads/no-image-icon-0.png';
         const email = e.target.email.value;
         const password = e.target.password.value;
-        CreateNewUserFB(email, password)
+        createUser(email, password)
             .then(result => {
+                profileUpdate(name, imageURL);
                 e.target.reset();
-                setErrormessage('');
-                UpdateUserProfileFB(name, imageURL)
-                    .then(() => e.target.reset())
-                    .catch(e => console.log(e));
+                navigate(locate, { replace: true })
             })
-            .catch(e => setErrormessage(e.message.toLocaleUpperCase().replaceAll(/FIREBASE:|AUTH|[/:.]|ERROR|/g, '').replaceAll(/[-]/g, ' ')));
+            .catch(error => console.error(error));
     }
     return (
         <form onSubmit={handleSignup}>
@@ -50,7 +49,6 @@ const SignupWithEmail = () => {
                             </label>
                             <input type="password" placeholder="password" name='password' className="input input-bordered" required />
                         </div>
-                        {errorMessage}
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Sign Up</button>
                         </div>

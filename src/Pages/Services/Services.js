@@ -1,7 +1,9 @@
 import React from 'react';
+import useTitle from '../../Components/Titlehook/useTitle';
 import ServiceCard from './ServiceCard';
 
 const Services = () => {
+    useTitle('Services')
     return (
         <div>
             <div className='p-4'>

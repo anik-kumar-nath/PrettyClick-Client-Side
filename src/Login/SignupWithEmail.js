@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useTitle from '../Components/Titlehook/useTitle';
 import { AuthContext } from '../Contexts/AuthContextProvider';
 
 const SignupWithEmail = () => {
-
+    useTitle('Sign Up')
     const { createUser, locate, profileUpdate } = useContext(AuthContext);
     const navigate = useNavigate();
     const handleSignup = (e) => {

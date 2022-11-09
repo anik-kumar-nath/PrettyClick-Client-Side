@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import useTitle from '../../Components/Titlehook/useTitle';
 import { AuthContext } from '../../Contexts/AuthContextProvider';
 import ServiceReviews from './ServiceReviews';
 
 const ServiceDetails = () => {
+    useTitle('ServiceDetails');
     const { user } = useContext(AuthContext);
     const handleReview = (e) => {
         e.preventDefault();

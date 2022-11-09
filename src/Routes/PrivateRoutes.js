@@ -6,7 +6,7 @@ const PrivateRoutes = ({ children }) => {
     const currentLocation = useLocation();
     const { user, loading } = useContext(AuthContext);
     if (loading) {
-        return (<h1>Waiting........</h1>);
+        return (<button className="btn loading">Loading...</button>);
     }
 
     if (!user) {

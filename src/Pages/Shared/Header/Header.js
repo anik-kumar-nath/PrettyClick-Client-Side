@@ -21,8 +21,8 @@ const Header = () => {
             {
                 user ?
                     <>
-                        <li><Link to={''}>My Reviews</Link></li>
-                        <li><Link to={''}>Add Services</Link></li>
+                        <li><Link to={'/myreviews'}>My Reviews</Link></li>
+                        <li><Link to={'/addservice'}>Add Services</Link></li>
                     </> : ""
             }
             <li><Link to={'/blogs'}>Blogs</Link></li>

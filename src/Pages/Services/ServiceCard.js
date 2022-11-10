@@ -3,27 +3,25 @@ import { Link } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 
-const ServiceCard = () => {
-    const text = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam quisquam dolores sint quis at? Soluta, expedita. Rerum sunt eos obcaecati velit voluptate pariatur consequuntur, illo, id praesentium ratione nemo a. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias provident fuga praesentium nesciunt tempora inventore voluptas perferendis temporibus eligendi fugiat beatae omnis hic, similique, deleniti repellendus modi impedit placeat autem.Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam quisquam dolores sint quis at? Soluta, expedita. Rerum sunt eos obcaecati velit voluptate pariatur consequuntur, illo, id praesentium ratione nemo a. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias provident fuga praesentium nesciunt tempora inventore voluptas perferendis temporibus eligendi fugiat beatae omnis hic, similique, deleniti repellendus modi impedit placeat autem.';
-
-
+const ServiceCard = ({ service }) => {
+    const { _id, photo, title, price, description } = service;
     return (
         <div>
             <div className="card card-compact w-full bg-base-100 shadow-xl">
                 <figure>
                     <PhotoProvider maskOpacity={0.9}>
-                        <PhotoView src="https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg" >
-                            <img src="https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg" alt="Shoes" />
+                        <PhotoView src={photo} >
+                            <img src={photo} alt="Shoes" />
                         </PhotoView>
                     </PhotoProvider>
                 </figure>
                 <div className="card-body">
-                    <h2 className="card-title">This is Product information</h2>
-                    <h3 className="font-bold text-2xl text-orange-500">$500</h3>
+                    <h2 className="card-title">{title}</h2>
+                    <h3 className="font-bold text-2xl text-orange-500">${price}</h3>
 
-                    <p>{text.slice(0, 100)}...</p>
+                    <p>{description.slice(0, 100)}...</p>
                     <div className="card-actions justify-center">
-                        <Link to={'/services/details'} className="btn btn-primary">Vew Details</Link>
+                        <Link to={`/services/${_id}`} className="btn btn-primary">Vew Details</Link>
                     </div>
                 </div>
             </div>

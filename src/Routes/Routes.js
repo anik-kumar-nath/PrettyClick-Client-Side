@@ -7,6 +7,8 @@ import Home from "../Pages/Home/Home";
 import ServiceDetails from "../Pages/Services/ServiceDetails";
 import Services from "../Pages/Services/Services";
 import Unknownroute from "../Pages/Unknownroute/Unknownroute";
+import AddService from "../Pages/UserOption/AddService/AddService";
+import MyReviews from "../Pages/UserOption/MyReviews/MyReviews";
 import PrivateRoutes from "./PrivateRoutes";
 
 export const routes = createBrowserRouter([
@@ -17,27 +19,46 @@ export const routes = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
+                loader: () => fetch('http://localhost:5000/recentservice'),
+                errorElement: <Unknownroute></Unknownroute>
             },
             {
                 path: '/services',
-                element: <PrivateRoutes><Services></Services></PrivateRoutes>
+                element: <Services></Services>,
+                loader: () => fetch('http://localhost:5000/services'),
+                errorElement: <Unknownroute></Unknownroute>
             },
             {
-                path: '/services/details',
-                element: <ServiceDetails></ServiceDetails>
+                path: '/services/:id',
+                element: <ServiceDetails></ServiceDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`),
+                errorElement: <Unknownroute></Unknownroute>
             },
             {
                 path: '/login',
-                element: <Login></Login>
+                element: <Login></Login>,
+                errorElement: <Unknownroute></Unknownroute>
             }
             ,
             {
                 path: '/signup',
-                element: <SignupWithEmail></SignupWithEmail>
+                element: <SignupWithEmail></SignupWithEmail>,
+                errorElement: <Unknownroute></Unknownroute>
             },
             {
                 path: '/blogs',
-                element: <Blogs></Blogs>
+                element: <Blogs></Blogs>,
+                errorElement: <Unknownroute></Unknownroute>
+            },
+            {
+                path: '/myreviews',
+                element: <PrivateRoutes><MyReviews></MyReviews></PrivateRoutes>,
+                errorElement: <Unknownroute></Unknownroute>
+            },
+            {
+                path: '/addservice',
+                element: <PrivateRoutes><AddService></AddService></PrivateRoutes>,
+                errorElement: <Unknownroute></Unknownroute>
             },
             {
                 path: '*',

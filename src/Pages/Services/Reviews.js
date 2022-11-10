@@ -12,7 +12,7 @@ const Reviews = ({ id, title }) => {
 
     useEffect(() => {
         if (review) {
-            fetch('http://localhost:5000/review', {
+            fetch('https://assignment-11-phi.vercel.app/review', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -30,7 +30,7 @@ const Reviews = ({ id, title }) => {
     }, [review])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/servicereviews?serviceid=${id}`)
+        fetch(`https://assignment-11-phi.vercel.app/servicereviews?serviceid=${id}`)
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [state])

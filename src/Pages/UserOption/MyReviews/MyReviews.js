@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import useTitle from '../../../Components/Titlehook/useTitle';
 import { AuthContext } from '../../../Contexts/AuthContextProvider';
 import ReviewCard from './ReviewCard';
 
 const MyReviews = () => {
+    useTitle('My Reviews');
     const [state, setState] = useState(false);
     const { user, loading } = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
@@ -12,7 +14,7 @@ const MyReviews = () => {
     const handleUpdate = (id, comment) => {
         const updateUser = { comment };
         console.log(comment, id)
-        if (comment) fetch(`http://localhost:5000/review/${id}`, {
+        if (comment) fetch(`https://assignment-11-phi.vercel.app/review/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -33,7 +35,7 @@ const MyReviews = () => {
     const handleDelete = (id) => {
         const DeleteId = id;
         {
-            fetch(`http://localhost:5000/review/${DeleteId}`, {
+            fetch(`https://assignment-11-phi.vercel.app/review/${DeleteId}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -47,7 +49,7 @@ const MyReviews = () => {
     }
 
     useEffect(() => {
-        !loading && fetch(`http://localhost:5000/userreviews?userEmail=${user.email}`)
+        !loading && fetch(`https://assignment-11-phi.vercel.app/userreviews?userEmail=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 const { users, count } = data;

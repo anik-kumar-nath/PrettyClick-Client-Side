@@ -19,19 +19,19 @@ export const routes = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/recentservice'),
+                loader: () => fetch('https://assignment-11-phi.vercel.app/recentservice'),
                 errorElement: <Unknownroute></Unknownroute>
             },
             {
                 path: '/services',
                 element: <Services></Services>,
-                loader: () => fetch('http://localhost:5000/services'),
+                loader: () => fetch('https://assignment-11-phi.vercel.app/services'),
                 errorElement: <Unknownroute></Unknownroute>
             },
             {
                 path: '/services/:id',
                 element: <ServiceDetails></ServiceDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`),
+                loader: ({ params }) => fetch(`https://assignment-11-phi.vercel.app/services/${params.id}`),
                 errorElement: <Unknownroute></Unknownroute>
             },
             {

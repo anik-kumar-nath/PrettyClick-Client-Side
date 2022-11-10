@@ -48,6 +48,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/blogs',
                 element: <Blogs></Blogs>,
+                // loader: () => fetch('Blogs.json'),
                 errorElement: <Unknownroute></Unknownroute>
             },
             {

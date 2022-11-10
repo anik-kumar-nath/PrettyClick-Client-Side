@@ -1,20 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+// import { useLoaderData } from 'react-router-dom';
 import useTitle from '../../Components/Titlehook/useTitle';
+import Blog from './Blog';
 
 
 const Blogs = () => {
     useTitle('Blogs')
+    const [blogs, setBlogs] = useState([]);
+    useEffect(() => {
+        fetch('Blogs.json')
+            .then(res => res.json())
+            .then(data => setBlogs(data));
+    }, [])
     return (
-        <div>
-            This is blog page
-            {/* <PhotoProvider maskOpacity={0.9}>
-                <PhotoView src="https://placeimg.com/400/225/arch" >
-                    <div>
-                        <img src="https://placeimg.com/400/225/arch" alt="" />
-                    </div>
-                </PhotoView>
-            </PhotoProvider> */}
+        <div className='m-2'>
+            <h2 className='text-4xl font-bold text-center m-8'>My Blogs</h2>
+            <div>
+                {
+                    blogs.map((blog, index) => <Blog key={index} index={index + 1} blog={blog}></Blog>)
+                }
+            </div>
         </div>
+
     );
 };
 

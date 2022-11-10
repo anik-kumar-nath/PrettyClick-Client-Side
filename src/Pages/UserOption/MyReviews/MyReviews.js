@@ -8,6 +8,28 @@ const MyReviews = () => {
     const { user, loading } = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
     const [count, setCount] = useState(0);
+
+    const handleUpdate = (id, comment) => {
+        const updateUser = { comment };
+        console.log(comment, id)
+        if (comment) fetch(`http://localhost:5000/review/${id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateUser)
+        }
+        )
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setState(!state);
+                toast.success('Review Update Successfully');
+            });
+    }
+
+
+
     const handleDelete = (id) => {
         const DeleteId = id;
         {
@@ -36,14 +58,16 @@ const MyReviews = () => {
     return (
         <div>
             <h2 className='text-xl font-bold text-center my-4'>Own Reviews</h2>
-            <div className='grid grid-cols-1 md:gird-cols-2 lg:grid-cols-3 gap-2 px-2 my-4'>
-                {
-                    count ?
-                        reviews.map((my_review, index) => <ReviewCard key={index} my_review={my_review} handleDelete={handleDelete}></ReviewCard>)
-                        :
-                        <h1 className='text-yellow-900 font-bold text-2xl'>No review were added</h1>
-                }
-            </div>
+            {
+                count ?
+                    <div className='grid grid-cols-1 md:gird-cols-2 lg:grid-cols-3 gap-2 px-2 my-4'>
+                        {
+                            reviews.map((my_review, index) => <ReviewCard key={index} my_review={my_review} handleDelete={handleDelete} handleUpdate={handleUpdate}></ReviewCard>)
+                        }
+                    </div>
+                    :
+                    <h1 className='text-yellow-900 font-bold text-center text-2xl'>No review were added</h1>
+            }
         </div>
     );
 };

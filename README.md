@@ -5,7 +5,7 @@
 A Service providing a website where different types of photographic services have been offered such as Grand Tour, Weddings, Destination Elopements, Adventures, Elopement Videography, Albums & Prints, etc.
 
 #### Live website:
-https://assigment-11-f9275.web.app/
+https://pretty-click.web.app
 
 ## Project Status
 * This website has Login and Register option.

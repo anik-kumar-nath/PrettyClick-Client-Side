@@ -55,10 +55,10 @@ const Header = () => {
                                         <img src={user.photoURL} alt='user image' title={user.displayName} />
                                     </div>
                                 </div>
-                                <Link onClick={handleLogOut} className="btn">Log Out</Link>
+                                <Link onClick={handleLogOut} className="btn btn-primary">Log Out</Link>
                             </>
                             :
-                            <Link to={'/login'} className="btn">Log In</Link>
+                            <Link to={'/login'} className="btn btn-primary">Log In</Link>
                     }
                 </div>
             </div>

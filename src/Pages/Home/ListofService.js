@@ -46,7 +46,7 @@ const ListofService = () => {
                     }
                 </div>
                 <div className='w-full flex justify-center my-4'>
-                    <Link to={'/services'} className="btn btn-outline btn-primary">See All</Link>
+                    <Link to={'/services'} className="btn btn-outline btn-primary w-full md:w-auto">See All</Link>
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@ import Banner from './Banner';
 // import Carousel from './Carousel';
 import ListofService from './ListofService';
 import MyTeam from './MyTeam';
-import Testimonials from './Testimonials';
+// import Testimonials from './Testimonials';
 import WhyChoose from './WhyChoose';
 
 const Home = () => {
@@ -18,7 +18,7 @@ const Home = () => {
             <ListofService></ListofService>
             <AboutMe></AboutMe>
             <MyTeam />
-            <Testimonials></Testimonials>
+            {/* <Testimonials></Testimonials> */}
             <WhyChoose />
             {/* <GetInTouch /> */}
         </div>

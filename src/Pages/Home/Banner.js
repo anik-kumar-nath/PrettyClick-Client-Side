@@ -4,8 +4,8 @@ import bannerImage from './../../Asset/Carousel/carousel (2).jpg'
 
 const Banner = () => {
     return (
-        <div>
-            <div className="relative flex flex-col-reverse py-8 lg:pt-0 lg:flex-col lg:pb-0">
+        <div className='w-full'>
+            {/* <div className="relative flex flex-col-reverse py-8 lg:pt-0 lg:flex-col lg:pb-0">
                 <div className="inset-y-0 top-0 right-0 z-0 w-full max-w-xl px-4 mx-auto md:px-0 lg:pr-0 lg:mb-0 lg:mx-0 lg:w-7/12 lg:max-w-full lg:absolute xl:px-0">
                     <svg
                         className="absolute left-0 hidden h-full text-white transform -translate-x-1/2 lg:block"
@@ -44,7 +44,32 @@ const Banner = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
+            <section className='relative w-full'>
+                <img src={bannerImage} className='absolute w-full h-full overflow-hidden object-cover object-center' alt="" />
+                <div className="absolute inset-0 bg-white/60" />
+                <div className="relative flex items-center justify-start px-8 py-40">
+                    <div className="">
+                        <h1 className="text-3xl font-extrabold sm:text-5xl">
+                            Click Your
+                            <strong className="block font-extrabold text-primary">
+                                Memorable Moments
+                            </strong>
+                        </h1>
+                        <p className="mt-4 max-w-lg sm:text-xl sm:leading-relaxed">
+                            A camera that puts a world of possibilities at your fingertips. Back it up. Get it back. Capture it all. Exceptional images deserve an exceptional presentation.
+                        </p>
+                        <div className="flex flex-wrap gap-4 text-center">
+                            <Link
+                                to={'/services'}
+                                className="btn btn-primary mt-4"
+                            >
+                                My Services
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };

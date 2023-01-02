@@ -12,12 +12,12 @@ const ServiceCard = ({ service }) => {
                     <PhotoProvider maskOpacity={0.9}>
                         <PhotoView src={photo} >
                             <div className="relative overflow-hidden bg-no-repeat bg-cover w-full cursor-zoom-in " title='Full Screen'>
-                                <img src={photo} className="w-full hover:scale-110 h-72 transition duration-300 ease-in-out" alt="Louvre" />
+                                <img src={photo} className="w-full hover:scale-110 h-40 md:h-60 transition duration-300 ease-in-out" alt="Louvre" />
                             </div>
                         </PhotoView>
                     </PhotoProvider>
                 </figure>
-                <div className="card-body">
+                <div className="card-body h-56">
                     <h1 className="text-xl font-semibold text-gray-800 dark:text-white">{title}</h1>
 
                     <h1 className="text-lg font-bold text-orange-500 md:text-xl">${price}</h1>

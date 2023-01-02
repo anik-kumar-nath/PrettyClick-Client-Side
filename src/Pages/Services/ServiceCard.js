@@ -7,26 +7,29 @@ const ServiceCard = ({ service }) => {
     const { _id, photo, title, price, description } = service;
     return (
         <div>
-            <div className="card card-compact w-full h-96 bg-base-100 shadow-xl">
+            <div className="card card-compact w-full bg-base-100 shadow-xl">
                 <figure>
                     <PhotoProvider maskOpacity={0.9}>
                         <PhotoView src={photo} >
-                            <img src={photo} className='w-full h-64' alt="Shoes" />
+                            <div className="relative overflow-hidden bg-no-repeat bg-cover w-full cursor-zoom-in " title='Full Screen'>
+                                <img src={photo} className="w-full hover:scale-110 h-72 transition duration-300 ease-in-out" alt="Louvre" />
+                            </div>
                         </PhotoView>
                     </PhotoProvider>
                 </figure>
                 <div className="card-body">
-                    <h2 className="card-title">{title}</h2>
-                    <h3 className="font-bold text-2xl text-orange-500">${price}</h3>
+                    <h1 className="text-xl font-semibold text-gray-800 dark:text-white">{title}</h1>
+
+                    <h1 className="text-lg font-bold text-orange-500 md:text-xl">${price}</h1>
                     {
                         description.length > 90 ?
-                            <p>{description.slice(0, 100)}...</p>
+                            <p className="py-2 text-gray-700 dark:text-gray-400">{description.slice(0, 100)}...</p>
                             :
                             <p>{description}</p>
                     }
 
-                    <div className="card-actions justify-center">
-                        <Link to={`/services/${_id}`} className="btn btn-primary">Vew Details</Link>
+                    <div className="card-actions justify-center w-full">
+                        <Link to={`/services/${_id}`} className="btn btn-primary w-full">Vew Details</Link>
                     </div>
                 </div>
             </div>

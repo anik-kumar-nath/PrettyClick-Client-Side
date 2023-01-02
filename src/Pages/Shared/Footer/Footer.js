@@ -3,7 +3,7 @@ import logo from './../../Shared/logo.png'
 const Footer = () => {
     return (
         <div>
-            <footer className="footer footer-center p-10 bg-gray-300 text-base-content rounded">
+            <footer className="footer footer-center p-10 bg-gray-100 text-base-content rounded">
                 <div>
                     <img src={logo} alt="" width={70} />
                     <p className="font-bold">

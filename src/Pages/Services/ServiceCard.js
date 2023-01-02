@@ -18,7 +18,7 @@ const ServiceCard = ({ service }) => {
                     </PhotoProvider>
                 </figure>
                 <div className="card-body h-56">
-                    <h1 className="text-xl font-semibold text-gray-800 dark:text-white">{title}</h1>
+                    <h1 className="text-xl font-semibold text-gray-800">{title}</h1>
 
                     <h1 className="text-lg font-bold text-orange-500 md:text-xl">${price}</h1>
                     {

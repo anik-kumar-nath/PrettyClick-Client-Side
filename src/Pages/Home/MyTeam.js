@@ -71,7 +71,7 @@ const MyTeam = () => {
                             </svg>
                             <span className="relative">Welcome</span>
                         </span>{' '}
-                        our talented team of professionals
+                        my talented team of professionals
                     </h2>
                     <p className="text-base text-gray-700 md:text-lg">
                         A young enthusiastic team with a bunch of talents and experience. They are able to work 24/7 for the seek a perfect project done on time.

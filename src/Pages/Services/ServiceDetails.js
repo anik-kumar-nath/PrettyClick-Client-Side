@@ -8,7 +8,7 @@ const ServiceDetails = () => {
     const { _id, photo, title, price, description } = servicesDetails;
     useTitle('ServiceDetails');
     return (
-        <div>
+        <div className='p-4 w-full md:w-[60%] lg:w-[50] mx-auto'>
             <div className="card card-compact w-full bg-base-100 shadow-xl">
                 <figure><img src={photo} className='w-full' alt="Shoes" /></figure>
                 <div className="card-body">

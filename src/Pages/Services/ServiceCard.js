@@ -6,7 +6,8 @@ import 'react-photo-view/dist/react-photo-view.css';
 const ServiceCard = ({ service }) => {
     const { _id, photo, title, price, description } = service;
     return (
-        <div>
+        <div data-aos="fade-up"
+            data-aos-duration="1500">
             <div className="card card-compact w-full bg-base-100 shadow-xl">
                 <figure>
                     <PhotoProvider maskOpacity={0.9}>

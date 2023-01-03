@@ -17,7 +17,6 @@ const ReviewCard = ({ my_review, handleDelete, handleUpdate }) => {
                     <h2 className="card-title text-gray-500">{serivceTitle}</h2>
                     <small>{reviewText}</small>
                     <div className="card-actions justify-end">
-                        {/* <button className="btn btn-primary" onClick={() => console.log(_id)}>Edit</button> */}
                         <label htmlFor="my-modal" className="btn">Edit</label>
                         <button className="btn btn-outline btn-warning" onClick={() => handleDelete(_id)}>Delete</button>
                         <input type="checkbox" id="my-modal" className="modal-toggle" />

@@ -4,7 +4,8 @@ const WhyChoose = () => {
     return (
         <div>
             <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-                <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+                <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12" data-aos="flip-left"
+                    data-aos-easing="ease-out-cubic" data-aos-once="true" data-aos-duration="1500">
                     <div>
                         <p className="inline-block px-3 py-px mb-4  font-semibold text-teal-900 rounded-full bg-orange-200">
                             Why Choose Me
@@ -40,14 +41,16 @@ const WhyChoose = () => {
                     </h2>
                 </div>
                 <div className="grid max-w-screen-lg gap-8 lg:grid-cols-2 sm:mx-auto">
-                    <div className="grid grid-cols-1 gap-5">
+                    <div className="grid grid-cols-1 gap-5" data-aos="fade-up"
+                        data-aos-duration="1500">
                         <img
                             className="object-cover w-full h-full rounded shadow-lg"
                             src={photographer}
                             alt="photographer"
                         />
                     </div>
-                    <div className="flex flex-col justify-center">
+                    <div className="flex flex-col justify-center" data-aos="fade-down"
+                        data-aos-duration="1500">
                         <div className="pb-4 mb-4 border-b shadow-lg rounded-md p-4">
                             <h6 className="mb-2 font-semibold leading-5 ">
                                 Professional

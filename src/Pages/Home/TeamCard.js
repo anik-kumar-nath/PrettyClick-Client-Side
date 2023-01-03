@@ -3,7 +3,8 @@ import React from 'react';
 const TeamCard = ({ name, title, about, photo, twitter, facebook }) => {
     return (
         <div>
-            <div>
+            <div data-aos="fade-up"
+                data-aos-duration="1500">
                 <div className="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
                     <img
                         className="object-cover w-full h-56 md:h-64 xl:h-80"

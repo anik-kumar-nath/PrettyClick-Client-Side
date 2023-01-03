@@ -52,7 +52,7 @@ const Header = () => {
                             <>
                                 <div className="avatar">
                                     <div className="w-14 mr-1 rounded-full">
-                                        <img src={user.photoURL} alt='user image' title={user.displayName} />
+                                        <img src={user.photoURL} alt='user' title={user.displayName} />
                                     </div>
                                 </div>
                                 <Link onClick={handleLogOut} className="btn btn-primary">Log Out</Link>

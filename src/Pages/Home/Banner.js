@@ -49,7 +49,7 @@ const Banner = () => {
                 <img src={bannerImage} className='absolute w-full h-full overflow-hidden object-cover object-center' alt="" />
                 <div className="absolute inset-0 bg-white/60" />
                 <div className="relative flex items-center justify-start px-8 py-40">
-                    <div className="">
+                    <div className="" data-aos="fade-left" data-aos-once="true" data-aos-duration="1500">
                         <h1 className="text-3xl font-extrabold sm:text-5xl">
                             Click Your
                             <strong className="block font-extrabold text-primary">

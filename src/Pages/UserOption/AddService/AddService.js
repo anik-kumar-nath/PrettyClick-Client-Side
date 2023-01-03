@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useRef } from 'react';
 import toast from 'react-hot-toast';
 import useTitle from '../../../Components/Titlehook/useTitle';
 
@@ -24,6 +25,10 @@ const AddService = () => {
         }
     }, [service])
 
+    const [image, setImage] = useState()
+    const [showImage, setShowImage] = useState(false)
+    const imageRef = useRef("");
+    // console.log(imageRef.current.value)
 
     const handleNewService = (e) => {
         e.preventDefault();
@@ -43,7 +48,7 @@ const AddService = () => {
     }
 
     return (
-        <div className='p-8'>
+        <div className='p-14'>
             <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
                 <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-black sm:text-4xl md:mx-auto">
                     <span className="relative inline-block">
@@ -87,17 +92,25 @@ const AddService = () => {
                                 </label>
                                 <input type="name" placeholder="Service Title" name='title' className="input input-bordered" required />
                             </div>
+                            {
+                                showImage ?
+                                    <div className='max-w-xs h-40 p-1 mx-auto'>
+                                        <img src={image} className='h-40' alt="" onError={() => { setShowImage(false); imageRef.current.value = '' }} />
+                                    </div>
+                                    :
+                                    image && <small className='text-red-500'>Your Image link not working,<br />Please give another link</small>
+                            }
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Photo URL</span>
                                 </label>
-                                <input type="text" placeholder="Photo URL link" name='photoURL' className="input input-bordered" required />
+                                <input type="text" ref={imageRef} onBlur={(e) => { setImage(e.target.value); setShowImage(true) }} placeholder="Photo URL link" name='photoURL' className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Price</span>
                                 </label>
-                                <input type="number" placeholder="price" name='price' className="input input-bordered" required />
+                                <input type="number" min={0} placeholder="price" name='price' className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">

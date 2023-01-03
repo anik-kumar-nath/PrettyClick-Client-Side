@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { RotatingLines } from 'react-loader-spinner';
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthContextProvider';
 import ServiceReviews from './ServiceReviews';
@@ -49,6 +50,7 @@ const Reviews = ({ id, title }) => {
         setReview(reviewInformation)
         e.target.reset();
     }
+
     return (
         <div>
             <h2 className='text-xl font-bold text-center mb-8'>List Of Reviews</h2>
@@ -65,7 +67,18 @@ const Reviews = ({ id, title }) => {
                         <p className='text-center'>To add review, Please <Link to={'/login'} state={{ from: currentLocation }} replace className='text-purple-900 font-bold btn btn-warning'>Login</Link> </p>
                 }
                 {
-                    reviews && reviews.map((s_review, index) => <ServiceReviews key={index} s_review={s_review} ></ServiceReviews>)
+                    !reviews ?
+                        <div className='mx-auto'>
+                            <RotatingLines
+                                strokeColor="grey"
+                                strokeWidth="5"
+                                animationDuration="0.75"
+                                width="60"
+                                visible={true}
+                            />
+                        </div>
+                        :
+                        reviews.map((s_review, index) => <ServiceReviews key={index} s_review={s_review} ></ServiceReviews>)
                 }
             </div>
         </div>

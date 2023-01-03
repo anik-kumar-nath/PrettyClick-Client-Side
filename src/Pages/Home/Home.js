@@ -2,7 +2,7 @@ import React from 'react';
 import useTitle from '../../Components/Titlehook/useTitle';
 import AboutMe from './AboutMe';
 import Banner from './Banner';
-// import GetInTouch from './GetInTouch';
+import GetInTouch from './GetInTouch';
 // import Carousel from './Carousel';
 import ListofService from './ListofService';
 import MyTeam from './MyTeam';
@@ -24,7 +24,7 @@ const Home = () => {
             <hr />
             {/* <Testimonials></Testimonials> */}
             <WhyChoose />
-            {/* <GetInTouch /> */}
+            <GetInTouch />
         </div>
     );
 };

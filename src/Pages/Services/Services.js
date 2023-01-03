@@ -1,11 +1,23 @@
 import React from 'react';
+import { RotatingLines } from 'react-loader-spinner';
 import { useLoaderData } from 'react-router-dom';
 import useTitle from '../../Components/Titlehook/useTitle';
+import Pagination from './Pagination';
 import ServiceCard from './ServiceCard';
 
 const Services = () => {
     const servicesData = useLoaderData();
-    useTitle('Services')
+    useTitle('Services');
+    if (!servicesData) {
+        return <RotatingLines
+            strokeColor="grey"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="96"
+            visible={true}
+        />;
+    }
+
     return (
         <div>
             <div className='my-8 p-4'>
@@ -42,11 +54,37 @@ const Services = () => {
                         It's not enough to just own a camera. Everyone owns a camera. To be a photographer, you must understand, appreciate, and harness the power you hold!
                     </p>
                 </div>
-                <div className='grid gap-4 grid-cols-1 lg:grid-cols-3 md:grid-cols-2'>
+                <div className='flex justify-end items-start'>
+                    <div className='flex items-center'>
+                        <strong>Show:</strong>&nbsp; <select className="select select-primary w-auto select-sm">
+                            <option>6</option>
+                            <option>9</option>
+                            <option>12</option>
+                            <option>15</option>
+                        </select>
+                    </div>
+                </div>
+                <div className='m-2'>
                     {
-                        servicesData.map((service, index) => <ServiceCard key={index} service={service}></ServiceCard>)
+                        !servicesData ?
+                            <div className='w-full flex justify-center'>
+                                <RotatingLines
+                                    strokeColor="grey"
+                                    strokeWidth="5"
+                                    animationDuration="0.75"
+                                    width="96"
+                                    visible={true}
+                                />
+                            </div>
+                            :
+                            <div className='grid gap-4 grid-cols-1 lg:grid-cols-3 md:grid-cols-2'>
+                                {
+                                    servicesData.map((service, index) => <ServiceCard key={index} service={service}></ServiceCard>)
+                                }
+                            </div>
                     }
                 </div>
+                <Pagination />
             </div>
         </div>
     );

@@ -1,9 +1,11 @@
 import React from 'react';
+import { RotatingLines } from 'react-loader-spinner';
 import { Link, useLoaderData } from 'react-router-dom';
 import ServiceCard from '../Services/ServiceCard';
 
 const ListofService = () => {
     const recentService = useLoaderData();
+
     return (
         <div>
             <div className="px-4 py-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-16">
@@ -41,13 +43,30 @@ const ListofService = () => {
                         It's not enough to just own a camera. Everyone owns a camera. To be a photographer, you must understand, appreciate, and harness the power you hold!
                     </p>
                 </div>
-                <div className='grid gap-4 grid-cols-1 lg:grid-cols-3 md:grid-cols-2'>
+                <div className='w-full'>
                     {
-                        recentService && recentService.map((service, index) => <ServiceCard key={index} service={service}></ServiceCard>)
+                        !recentService ?
+                            <div className='w-full flex justify-center'>
+                                <RotatingLines
+                                    strokeColor="grey"
+                                    strokeWidth="5"
+                                    animationDuration="0.75"
+                                    width="96"
+                                    visible={true}
+                                />
+                            </div>
+                            :
+                            <div>
+                                <div className='grid gap-4 grid-cols-1 lg:grid-cols-3 md:grid-cols-2'>
+                                    {
+                                        recentService.map((service, index) => <ServiceCard key={index} service={service}></ServiceCard>)
+                                    }
+                                </div>
+                                <div className='w-full flex justify-center my-4'>
+                                    <Link to={'/services'} className="btn btn-outline btn-primary w-full md:w-auto">See All</Link>
+                                </div>
+                            </div>
                     }
-                </div>
-                <div className='w-full flex justify-center my-4'>
-                    <Link to={'/services'} className="btn btn-outline btn-primary w-full md:w-auto">See All</Link>
                 </div>
             </div>
         </div>

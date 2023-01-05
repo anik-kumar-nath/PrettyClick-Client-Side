@@ -14,7 +14,7 @@ const MyReviews = () => {
     const handleUpdate = (id, comment) => {
         const updateUser = { comment };
         console.log(comment, id)
-        if (comment) fetch(`https://assignment-11-phi.vercel.app/review/${id}`, {
+        if (comment) fetch(`https://pretty-click.vercel.app/review/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -35,7 +35,7 @@ const MyReviews = () => {
     const handleDelete = (id) => {
         const DeleteId = id;
         {
-            fetch(`https://assignment-11-phi.vercel.app/review/${DeleteId}`, {
+            fetch(`https://pretty-click.vercel.app/review/${DeleteId}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -49,7 +49,7 @@ const MyReviews = () => {
     }
 
     useEffect(() => {
-        !loading && fetch(`https://assignment-11-phi.vercel.app/userreviews?userEmail=${user.email}`)
+        !loading && fetch(`https://pretty-click.vercel.app/userreviews?userEmail=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 const { users, count } = data;

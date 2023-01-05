@@ -9,7 +9,7 @@ const AddService = () => {
     const [service, setService] = useState()
     useEffect(() => {
         if (service) {
-            fetch('https://assignment-11-phi.vercel.app/services', {
+            fetch('https://pretty-click.vercel.app/services', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

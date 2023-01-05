@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { RotatingLines } from 'react-loader-spinner';
-import { useLoaderData } from 'react-router-dom';
 import useTitle from '../../Components/Titlehook/useTitle';
 import Pagination from './Pagination';
 import ServiceCard from './ServiceCard';
 
 const Services = () => {
-    const servicesData = useLoaderData();
+    const [pageItems, setPageItems] = useState(3);
+    const [pageNo, setPageNo] = useState(0);
+    const [servicesData, setServicesData] = useState();
     useTitle('Services');
+
+    const loadData = () => fetch(`https://pretty-click.vercel.app/services?page=${pageNo}&size=${pageItems}`).then(res => res.json()).then(data => setServicesData(data));
+
+    useEffect(() => {
+        loadData();
+    }, [pageItems, pageNo])
+
+    // const { count, services } = servicesData;
+    // console.log(count, services)
+
     if (!servicesData) {
         return <RotatingLines
             strokeColor="grey"
@@ -18,9 +30,12 @@ const Services = () => {
         />;
     }
 
+
+
     return (
-        <div>
-            <div className='my-8 p-4'>
+        // <div></div>
+        <div className='mx-4'>
+            <div className='my-10'>
                 <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
                     <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-black sm:text-4xl md:mx-auto">
                         <span className="relative inline-block">
@@ -56,11 +71,12 @@ const Services = () => {
                 </div>
                 <div className='flex justify-end items-start'>
                     <div className='flex items-center'>
-                        <strong>Show:</strong>&nbsp; <select className="select select-primary w-auto select-sm">
-                            <option>6</option>
-                            <option>9</option>
-                            <option>12</option>
-                            <option>15</option>
+                        <strong>Per Page:</strong>&nbsp; <select className="select select-primary w-auto select-sm" name='perPage' onChange={(e) => { setPageItems(e.target.value); setPageNo(0) }}>
+                            <option value={3}>3</option>
+                            <option value={6}>6</option>
+                            <option value={9}>9</option>
+                            <option value={12}>12</option>
+                            <option value={15}>15</option>
                         </select>
                     </div>
                 </div>
@@ -79,12 +95,12 @@ const Services = () => {
                             :
                             <div className='grid gap-4 grid-cols-1 lg:grid-cols-3 md:grid-cols-2'>
                                 {
-                                    servicesData.map((service, index) => <ServiceCard key={index} service={service}></ServiceCard>)
+                                    servicesData.services.map((service, index) => <ServiceCard key={index} service={service}></ServiceCard>)
                                 }
                             </div>
                     }
                 </div>
-                <Pagination />
+                <Pagination items={servicesData.count} pageNo={pageNo} setPageNo={setPageNo} pageItems={pageItems} />
             </div>
         </div>
     );

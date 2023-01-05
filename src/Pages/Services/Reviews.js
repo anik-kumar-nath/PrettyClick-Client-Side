@@ -13,7 +13,7 @@ const Reviews = ({ id, title }) => {
 
     useEffect(() => {
         if (review) {
-            fetch('https://assignment-11-phi.vercel.app/review', {
+            fetch('https://pretty-click.vercel.app/review', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -31,7 +31,7 @@ const Reviews = ({ id, title }) => {
     }, [review])
 
     useEffect(() => {
-        fetch(`https://assignment-11-phi.vercel.app/servicereviews?serviceid=${id}`)
+        fetch(`https://pretty-click.vercel.app/servicereviews?serviceid=${id}`)
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [state])

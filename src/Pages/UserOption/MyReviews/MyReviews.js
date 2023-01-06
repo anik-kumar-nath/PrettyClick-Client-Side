@@ -13,7 +13,7 @@ const MyReviews = () => {
 
     const handleUpdate = (id, comment) => {
         const updateUser = { comment };
-        console.log(comment, id)
+        // console.log(comment, id)
         if (comment) fetch(`https://pretty-click.vercel.app/review/${id}`, {
             method: 'PUT',
             headers: {
@@ -24,7 +24,7 @@ const MyReviews = () => {
         )
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setState(!state);
                 toast.success('Review Update Successfully');
             });

@@ -6,7 +6,7 @@ import Header from '../Pages/Shared/Header/Header';
 const Main = () => {
     return (
         <div className='min-h-screen flex flex-col '>
-            <div className='mb-auto'>
+            <div className='mb-auto shadow-lg'>
                 <Header></Header>
                 <hr />
             </div>

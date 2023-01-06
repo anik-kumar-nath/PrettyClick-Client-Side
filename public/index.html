@@ -26,13 +26,30 @@
     html {
       scroll-behavior: smooth;
     }
+
+    .loader-container {
+      align-items: center;
+      background-color: white;
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      width: 100vw;
+      z-index: -1000000000;
+      position: absolute;
+    }
+
+    .loader-container img {
+      width: 10%;
+    }
   </style>
   <title>PrettyClick</title>
 </head>
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
+  <div id="my-own-spinner" class="loader-container"><img src="./camera photo.gif" alt=""></div>
+  <div id="root" style="background-color: white;">
+  </div>
   <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -43,6 +60,12 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+  <script>
+    const loader = document.getElementById('my-own-spinner')
+    window.addEventListener('load', () => {
+      loader.style.display = 'none'
+    })
+  </script>
 </body>
 
 </html>

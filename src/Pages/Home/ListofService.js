@@ -63,7 +63,7 @@ const ListofService = () => {
                                     }
                                 </div>
                                 <div className='w-full flex justify-center my-4'>
-                                    <Link to={'/services'} className="btn btn-outline btn-primary w-full md:w-auto">See All</Link>
+                                    <Link to={'/services'} className="bg-blue-500 hover:bg-blue-700 text-white font-base py-2 px-12 rounded-full">See All</Link>
                                 </div>
                             </div>
                     }

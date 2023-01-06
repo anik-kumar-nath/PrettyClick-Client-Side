@@ -14,7 +14,7 @@ const Pagination = ({ items, pageNo, setPageNo, pageItems }) => {
                     <div className="container flex flex-col items-center px-6 py-5 mx-auto space-y-6 sm:flex-row sm:justify-between sm:space-y-0 ">
                         <div className="inline-flex flex-wrap justify-center gap-1">
 
-                            <div>
+                            <div className='flex gap-1'>
                                 <button className="inline-flex flex-wrap h-8 w-8 items-center justify-center rounded border border-primary hover:bg-purple-300" onClick={() => setPageNo(0)} title='Start'>
                                     <BiFirstPage />
                                 </button>
@@ -31,7 +31,7 @@ const Pagination = ({ items, pageNo, setPageNo, pageItems }) => {
                             }
 
 
-                            <div>
+                            <div className='flex gap-1'>
                                 <button className="inline-flex h-8 w-8 items-center justify-center rounded border border-primary hover:bg-purple-300" onClick={() => (pageNo) !== numberOfPage - 1 ? setPageNo(pageNo + 1) : setPageNo(numberOfPage - 1)} title='Next'>
                                     <GrFormNext />
                                 </button>
